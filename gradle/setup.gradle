@@ -33,6 +33,9 @@ task javadocJar(type: Jar) {
 }
 
 static def qualifyVersion(String v) {
+	// Handle +sp\d+ pattern (sealed version) as internal builds - not for public release
+	if (v.matches(/.*\+sp\d+$/)) return "SEAL_VERSION"
+
 	def versionNumber = VersionNumber.parse(v)
 
 	if (versionNumber == VersionNumber.UNKNOWN) return "BAD";

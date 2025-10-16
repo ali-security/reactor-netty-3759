@@ -73,7 +73,8 @@ class JarFileShadingTest extends AbstractJarFileTest {
 				.replace("-original.jar", "")
 				.replace(".jar", "");
 
-		String osgiVersion = version.replace('-', '.')
+		String osgiVersion = version.replace('+', '.')
+				.replace('-', '.')
 				.replace(".SNAPSHOT", ".BUILD-");
 
 		try (InputStream inputStream = jar.getInputStream(manifest);
